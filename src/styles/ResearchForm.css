@@ -1,0 +1,28 @@
+.research-form {
+  background-color: #2d3748;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #e2e8f0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.research-form > *:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.research-form .toggle-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.research-form .journal-section {
+  margin-top: 20px;
+}
+
+.research-form__submit {
+  margin-top: 30px;
+  text-align: center;
+}

@@ -1,8 +1,13 @@
-import React from 'react';
-import FilterButton from './FilterButton';
-import '../styles/FilterSection.css';
+import React from "react";
+import FilterButton from "./FilterButton";
+import "../styles/FilterSection.css";
 
-const FilterSection = ({ categories, statuses, activeFilters, onFilterChange }) => (
+const FilterSection = ({
+  categories,
+  statuses,
+  activeFilters,
+  onFilterChange,
+}) => (
   <div className="filter-section">
     <input
       type="text"
@@ -15,7 +20,7 @@ const FilterSection = ({ categories, statuses, activeFilters, onFilterChange }) 
           key={index}
           label={category}
           active={activeFilters.categories.includes(category)}
-          onClick={() => onFilterChange('categories', category)}
+          onClick={() => onFilterChange("categories", category)}
         />
       ))}
     </div>
@@ -25,7 +30,7 @@ const FilterSection = ({ categories, statuses, activeFilters, onFilterChange }) 
           key={index}
           label={status}
           active={activeFilters.statuses.includes(status)}
-          onClick={() => onFilterChange('statuses', status)}
+          onClick={() => onFilterChange("statuses", status)}
         />
       ))}
     </div>

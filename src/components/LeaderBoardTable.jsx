@@ -1,10 +1,8 @@
-import React from 'react';
-import '../styles/LeaderboardTable.css';
+import React from "react";
+import "../styles/LeaderboardTable.css";
 // import LeaderboardRow from 'LeaderboardRow';
 // import LeaderboardRow from './LeaderboardRow';
-import LeaderboardRow from './LeaderBoardRow';
-
-
+import LeaderboardRow from "./LeaderBoardRow";
 
 const LeaderboardTable = ({ data }) => (
   <table className="leaderboard-table">

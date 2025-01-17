@@ -1,5 +1,5 @@
-import React from 'react';
-import '../styles/ClaimList.css';
+import React from "react";
+import "../styles/ClaimList.css";
 
 const ClaimsList = ({ claims }) => (
   <div className="claims-list">
@@ -14,10 +14,10 @@ const ClaimsList = ({ claims }) => (
         <h3 className="claims-list__title">{claim.title}</h3>
         <p className="claims-list__analysis">{claim.analysis}</p>
         <div className="claims-list__footer">
-          <a href={claim.source} className="claims-list__source">View Source</a>
-          <span className="claims-list__trust-score">
-            {claim.trustScore}%
-          </span>
+          <a href={claim.source} className="claims-list__source">
+            View Source
+          </a>
+          <span className="claims-list__trust-score">{claim.trustScore}%</span>
         </div>
       </div>
     ))}

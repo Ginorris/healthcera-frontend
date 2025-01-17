@@ -1,0 +1,27 @@
+.time-range-selector {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.time-range-selector__button {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  background-color: #2d3748;
+  color: #e2e8f0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.time-range-selector__button:hover {
+  background-color: #4a5568;
+}
+
+.time-range-selector__button.active {
+  background-color: #63b3ed;
+  color: #1a202c;
+  font-weight: bold;
+}

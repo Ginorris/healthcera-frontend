@@ -1,0 +1,25 @@
+.research-page {
+  padding: 20px;
+  background-color: #1a202c;
+  min-height: 100vh;
+}
+
+.research-page__form {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #2d3748;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.research-page__toggles {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.research-page__submit {
+  margin-top: 30px;
+  text-align: center;
+}

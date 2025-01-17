@@ -1,13 +1,9 @@
-import React from 'react';
-import '../styles/InfluencerHeader.css';
+import React from "react";
+import "../styles/InfluencerHeader.css";
 
 const InfluencerHeader = ({ name, tags, description, image }) => (
   <div className="influencer-header">
-    <img
-      src={image}
-      alt={name}
-      className="influencer-header__image"
-    />
+    <img src={image} alt={name} className="influencer-header__image" />
     <div className="influencer-header__content">
       <h1 className="influencer-header__name">{name}</h1>
       <div className="influencer-header__tags">

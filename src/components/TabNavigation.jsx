@@ -1,12 +1,12 @@
-import React from 'react';
-import '../styles/TabNavigation.css';
+import React from "react";
+import "../styles/TabNavigation.css";
 
 const TabNavigation = ({ tabs, activeTab, onTabClick }) => (
   <div className="tab-navigation">
     {tabs.map((tab, index) => (
       <button
         key={index}
-        className={`tab-navigation__button ${activeTab === tab ? 'active' : ''}`}
+        className={`tab-navigation__button ${activeTab === tab ? "active" : ""}`}
         onClick={() => onTabClick(tab)}
       >
         {tab}
