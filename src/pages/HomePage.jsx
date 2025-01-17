@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/Home.css";
+import "../styles/HomePage.css";
 import Header from "../components/Header";
 import HomeHeader from "../components/HomeHeader";
 import StatsCard from "../components/StatCard";
@@ -41,7 +41,7 @@ const sampleData = [
 
 const filters = ["All", "Nutrition", "Fitness", "Medicine", "Mental Health"];
 
-const Home = () => {
+const HomePage = () => {
   const [activeFilter, setActiveFilter] = useState("All");
 
   // Filter logic
@@ -76,4 +76,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

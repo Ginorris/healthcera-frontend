@@ -5,7 +5,8 @@
 }
 
 .research-page__form {
-  max-width: 800px;
+  width: 80%;
+  /* max-width: 800px; */
   margin: 0 auto;
   background-color: #2d3748;
   padding: 20px;

@@ -15,6 +15,7 @@
   background-color: #2d3748;
   border-radius: 4px;
   color: #e2e8f0;
+  gap: 20px;
 }
 
 .toggle-switch__input {

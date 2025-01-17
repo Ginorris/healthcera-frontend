@@ -9,14 +9,18 @@
 }
 
 .journal-selector__item {
-  flex: 1 0 30%;
+  flex: 1;
   text-align: center;
   padding: 10px;
   background-color: #2d3748;
   color: #e2e8f0;
+  border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.2s;
+}
+
+.journal-selector__item:hover {
+  background-color: #4a5568;
 }
 
 .journal-selector__item.selected {

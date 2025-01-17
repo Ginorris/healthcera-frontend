@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Header from "./components/Header";
-import Home from "./pages/Home";
+import HomePage from "./pages/HomePage";
 
 const sampleData = [
   {
@@ -38,7 +38,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <Home
+      <HomePage
         data={filteredData}
         filters={filters}
         activeFilter={activeFilter}

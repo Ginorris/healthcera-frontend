@@ -1,6 +1,7 @@
 .tab-selector {
   display: flex;
   margin-bottom: 20px;
+  gap: 10px;
 }
 
 .tab-selector__tab {
