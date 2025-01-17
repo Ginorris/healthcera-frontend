@@ -1,0 +1,20 @@
+.stats-card {
+  background-color: #2d3748;
+  color: #e2e8f0;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  flex: 1;
+  max-width: 300px;
+}
+
+.stats-card__value {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.stats-card__label {
+  font-size: 1rem;
+  color: #a0aec0;
+}
