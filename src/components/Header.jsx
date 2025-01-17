@@ -3,10 +3,12 @@ import '../styles/Header.css';
 
 const Header = () => (
   <header className="header">
-    <h1 className="header__title">Influencer Trust Leaderboard</h1>
-    <p className="header__subtitle">
-      Real-time rankings of health influencers based on scientific accuracy, credibility, and transparency.
-    </p>
+    <div className="header__logo">Healthcera</div>
+    <nav className="header__nav">
+      <a href="/" className="header__link">Home</a>
+      <a href="/" className="header__link">About</a>
+      <a href="/" className="header__link">Contact</a>
+    </nav>
   </header>
 );
 

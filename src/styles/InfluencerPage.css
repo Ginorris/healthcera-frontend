@@ -1,0 +1,8 @@
+.influencer-page__stats {
+    display: flex;
+    justify-self: center;
+    justify-content: space-between;
+    gap: 20px; 
+    margin-bottom: 20px;
+    width: 80%;
+}

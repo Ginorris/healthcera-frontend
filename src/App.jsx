@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Header from './components/Header';
 import Home from './pages/Home';
 
 const sampleData = [
@@ -35,12 +36,15 @@ const App = () => {
       : sampleData.filter((row) => row.category === activeFilter);
 
   return (
-    <Home
-      data={filteredData}
-      filters={filters}
-      activeFilter={activeFilter}
-      onFilterChange={setActiveFilter}
-    />
+    <>
+      <Header />
+      <Home
+        data={filteredData}
+        filters={filters}
+        activeFilter={activeFilter}
+        onFilterChange={setActiveFilter} 
+      />
+    </>
   );
 };
 
