@@ -12,7 +12,6 @@ const LeaderboardTable = ({ data }) => (
         <th>Influencer</th>
         <th>Category</th>
         <th>Trust Score</th>
-        <th>Trend</th>
         <th>Followers</th>
         <th>Verified Claims</th>
       </tr>

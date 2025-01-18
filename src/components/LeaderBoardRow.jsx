@@ -4,12 +4,11 @@ import "../styles/LeaderboardRow.css";
 const LeaderboardRow = ({
   rank,
   influencer,
+  image,
   category,
   trustScore,
-  trend,
   followers,
   verifiedClaims,
-  image,
 }) => (
   <tr className="leaderboard-row">
     <td>{rank}</td>
@@ -21,7 +20,6 @@ const LeaderboardRow = ({
     </td>
     <td>{category}</td>
     <td>{trustScore}%</td>
-    <td>{trend === "up" ? "🔼" : "🔽"}</td>
     <td>{followers}</td>
     <td>{verifiedClaims}</td>
   </tr>

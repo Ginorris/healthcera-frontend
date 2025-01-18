@@ -5,12 +5,19 @@ export const fetchHome = async () => {
   return response.data;
 };
 
-export const fetchInfluencer = async (id) => {
-  const response = await api.get(`/influencers/${id}`);
+export const fetchInfluencer = async (name) => {
+  const response = await api.get(`/influencer/${name}`);
   return response.data;
 };
 
-export const addInfluencer = async (name) => {
-  const response = await api.post("/influencers", { name });
+export const searchClaims = async (influencerName, options = {}) => {
+  const payload = {
+    influencer_name: influencerName,
+    claims_per_influencer: options.claimsPerInfluencer || 50,
+    include_revenue: options.includeRevenue || false,
+    verify_with_journals: options.verifyWithJournals || false,
+    journals: options.journals || [],
+  };
+  const response = await api.post("/search/", payload);
   return response.data;
 };
