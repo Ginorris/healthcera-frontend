@@ -6,7 +6,9 @@ const ClaimsList = ({ claims }) => (
     {claims.map((claim, index) => (
       <div key={index} className="claims-list__item">
         <div className="claims-list__header">
-          <span className={`claims-list__status ${claim.validation.toLowerCase()}`}>
+          <span
+            className={`claims-list__status ${claim.validation.toLowerCase()}`}
+          >
             {claim.validation}
           </span>
           <span className="claims-list__date">{claim.created}</span>

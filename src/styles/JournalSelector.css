@@ -11,20 +11,26 @@
 .journal-selector__item {
   flex: 1;
   text-align: center;
-  padding: 10px;
+  border: none;
+  border: 1px solid #4a5568;
   background-color: #2d3748;
   color: #e2e8f0;
-  border: none;
+  padding: 0.5rem 1rem;
   border-radius: 4px;
+  font-size: 1rem;
   cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
 }
 
 .journal-selector__item:hover {
   background-color: #4a5568;
+  color: #ffffff;
 }
 
 .journal-selector__item.selected {
-  background-color: #63b3ed;
-  color: #1a202c;
-  font-weight: bold;
+  background-color: #38a169;
+  color: #ffffff;
+  border-color: #38a169;
 }

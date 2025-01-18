@@ -13,12 +13,19 @@ const LeaderboardRow = ({
   <tr className="leaderboard-row">
     <td>{rank}</td>
     <td>
-      <div className="leaderboard-row__content">
-        <img src={image} alt={influencer} className="leaderboard-row__image" />
-        {influencer}
-      </div>
+      {/* TODO no style, slug name, redirect */}
+      <a href="/influecer">
+        <div className="leaderboard-row__content">
+          <img
+            src={image}
+            alt={influencer}
+            className="leaderboard-row__image"
+          />
+          {influencer}
+        </div>
+      </a>
     </td>
-    <td>{category}</td>
+    <td>{category.charAt(0).toUpperCase() + category.slice(1)}</td>
     <td>{trustScore}%</td>
     <td>{followers}</td>
     <td>{verifiedClaims}</td>

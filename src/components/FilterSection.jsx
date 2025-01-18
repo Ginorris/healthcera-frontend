@@ -2,7 +2,12 @@ import React from "react";
 import FilterButton from "./FilterButton";
 import "../styles/FilterSection.css";
 
-const FilterSection = ({ categories, statuses, activeFilters, onFilterChange }) => (
+const FilterSection = ({
+  categories,
+  statuses,
+  activeFilters,
+  onFilterChange,
+}) => (
   <div className="filter-section">
     <input
       type="text"

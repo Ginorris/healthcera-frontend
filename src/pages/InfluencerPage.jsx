@@ -71,24 +71,25 @@ const InfluencerPage = () => {
   const handleFilterChange = (type, value) => {
     setActiveFilters((prevFilters) => {
       const updatedFilters = { ...prevFilters };
-  
+
       if (value === "All Categories" || value === "All Statuses") {
         // Reset the corresponding filter
         updatedFilters[type] = [];
       } else {
         if (updatedFilters[type].includes(value)) {
           // Remove the value if it's already selected
-          updatedFilters[type] = updatedFilters[type].filter((item) => item !== value);
+          updatedFilters[type] = updatedFilters[type].filter(
+            (item) => item !== value,
+          );
         } else {
           // Add the value if it's not already selected
           updatedFilters[type] = [...updatedFilters[type], value];
         }
       }
-  
+
       return updatedFilters;
     });
   };
-  
 
   // Filter claims based on active filters
   const filteredClaims = claims.filter((claim) => {
@@ -102,7 +103,9 @@ const InfluencerPage = () => {
 
     const matchesSearchTerm =
       activeFilters.searchTerm === "" ||
-      claim.claim.toLowerCase().includes(activeFilters.searchTerm.toLowerCase());
+      claim.claim
+        .toLowerCase()
+        .includes(activeFilters.searchTerm.toLowerCase());
 
     return matchesCategory && matchesStatus && matchesSearchTerm;
   });
@@ -118,7 +121,12 @@ const InfluencerPage = () => {
         <InfluencerHeader {...influencerData} />
         <div className="influencer-page__stats">
           {stats.map((stat, index) => (
-            <StatsCard key={index} value={stat.value} label={stat.label} tags={categories} />
+            <StatsCard
+              key={index}
+              value={stat.value}
+              label={stat.label}
+              tags={categories}
+            />
           ))}
         </div>
         {/* <TabNavigation

@@ -68,9 +68,15 @@ const HomePage = () => {
       <div className="home">
         <HomeHeader />
         <div className="home__stats">
-          <StatsCard value={stats.activeInfluencers} label="Active Influencers" />
+          <StatsCard
+            value={stats.activeInfluencers}
+            label="Active Influencers"
+          />
           <StatsCard value={stats.claimsVerified} label="Claims Verified" />
-          <StatsCard value={stats.averageTrustScore} label="Average Trust Score" />
+          <StatsCard
+            value={stats.averageTrustScore}
+            label="Average Trust Score"
+          />
         </div>
         <div className="home__filters">
           {filters.map((filter, index) => (

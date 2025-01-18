@@ -32,7 +32,8 @@
 }
 
 .toggle-switch__input:checked + .toggle-switch__slider {
-  background-color: #63b3ed;
+  background-color: #38a169;
+  border-color: #38a169;
 }
 
 .toggle-switch__slider::before {
