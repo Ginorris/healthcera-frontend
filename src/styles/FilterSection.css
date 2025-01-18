@@ -6,11 +6,12 @@
 
 .filter-section__search {
   padding: 10px;
+  color: #e2e8f0;
   border: 1px solid #4a5568;
   background-color: #1a202c;
   border-radius: 4px;
   margin-bottom: 10px;
-  width: 80%;
+  width: 98.5%;
 }
 
 .filter-section__categories,

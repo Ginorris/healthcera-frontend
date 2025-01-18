@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import Header from "../components/Header";
 import InfluencerHeader from "../components/InfluencerHeader";
 import StatsCard from "../components/StatCard";
@@ -6,51 +7,109 @@ import TabNavigation from "../components/TabNavigation";
 import FilterSection from "../components/FilterSection";
 import ClaimsList from "../components/ClaimList";
 import "../styles/InfluencerPage.css";
+import { fetchInfluencer } from "../api/apiCalls";
 
 const InfluencerPage = () => {
+  const { name } = useParams();
   const [activeTab, setActiveTab] = useState("Claims Analysis");
   const [activeFilters, setActiveFilters] = useState({
     categories: [],
     statuses: [],
+    searchTerm: "",
   });
+  const [influencerData, setInfluencerData] = useState(null);
+  const [claims, setClaims] = useState([]);
+  const [stats, setStats] = useState([]);
+  const [categories, setCategories] = useState(["All Categories"]);
+  const [statuses, setStatuses] = useState(["All Statuses"]);
 
-  const influencerData = {
-    name: "Andrew Huberman",
-    tags: ["Neuroscience", "Sleep", "Performance"],
-    description: "Stanford Professor of Neurobiology and Ophthalmology...",
-    image:
-      "https://yt3.googleusercontent.com/5ONImZvpa9_hYK12Xek2E2JLzRc732DWsZMX2F-AZ1cTutTQLBuAmcEtFwrCgypqJncl5HrV2w=s160-c-k-c0x00ffffff-no-rj",
-  };
+  useEffect(() => {
+    const loadInfluencerData = async () => {
+      try {
+        const response = await fetchInfluencer(name);
 
-  const stats = [
-    { value: "89%", label: "Trust Score" },
-    { value: "$5.0M", label: "Yearly Revenue" },
-    { value: "1", label: "Products" },
-    { value: "4.2M+", label: "Followers" },
-  ];
+        // Set influencer data
+        setInfluencerData({
+          name: response.name,
+          tags: response.tags || [],
+          description: response.description,
+          image: response.pp,
+        });
 
-  const claims = [
-    {
-      title: "Viewing sunlight within 30-60 minutes of waking...",
-      analysis: "Multiple studies confirm morning light exposure...",
-      date: "14/01/2024",
-      status: "verified",
-      source: "#",
-      trustScore: "92%",
-    },
-  ];
+        // Set statistics
+        setStats([
+          { value: response.score, label: "Trust Score" },
+          { value: response.revenue || "$0", label: "Yearly Revenue" },
+          { value: response.products || "0", label: "Products" },
+          { value: response.followers, label: "Followers" },
+        ]);
+
+        // Set claims and dynamically extract categories and statuses
+        const claimsData = response.claims || [];
+        setClaims(claimsData);
+
+        // Dynamically extract unique categories and statuses
+        const uniqueCategories = [
+          "All Categories",
+          ...new Set(claimsData.map((claim) => claim.category)),
+        ];
+        const uniqueStatuses = [
+          "All Statuses",
+          ...new Set(claimsData.map((claim) => claim.validation)),
+        ];
+
+        setCategories(uniqueCategories);
+        setStatuses(uniqueStatuses);
+      } catch (error) {
+        console.error("Failed to fetch influencer data:", error);
+      }
+    };
+
+    loadInfluencerData();
+  }, [name]);
 
   const handleFilterChange = (type, value) => {
     setActiveFilters((prevFilters) => {
-      const updated = { ...prevFilters };
-      if (updated[type].includes(value)) {
-        updated[type] = updated[type].filter((item) => item !== value);
+      const updatedFilters = { ...prevFilters };
+  
+      if (value === "All Categories" || value === "All Statuses") {
+        // Reset the corresponding filter
+        updatedFilters[type] = [];
       } else {
-        updated[type].push(value);
+        if (updatedFilters[type].includes(value)) {
+          // Remove the value if it's already selected
+          updatedFilters[type] = updatedFilters[type].filter((item) => item !== value);
+        } else {
+          // Add the value if it's not already selected
+          updatedFilters[type] = [...updatedFilters[type], value];
+        }
       }
-      return updated;
+  
+      return updatedFilters;
     });
   };
+  
+
+  // Filter claims based on active filters
+  const filteredClaims = claims.filter((claim) => {
+    const matchesCategory =
+      activeFilters.categories.length === 0 ||
+      activeFilters.categories.includes(claim.category);
+
+    const matchesStatus =
+      activeFilters.statuses.length === 0 ||
+      activeFilters.statuses.includes(claim.validation);
+
+    const matchesSearchTerm =
+      activeFilters.searchTerm === "" ||
+      claim.claim.toLowerCase().includes(activeFilters.searchTerm.toLowerCase());
+
+    return matchesCategory && matchesStatus && matchesSearchTerm;
+  });
+
+  if (!influencerData) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
@@ -59,27 +118,21 @@ const InfluencerPage = () => {
         <InfluencerHeader {...influencerData} />
         <div className="influencer-page__stats">
           {stats.map((stat, index) => (
-            <StatsCard key={index} value={stat.value} label={stat.label} />
+            <StatsCard key={index} value={stat.value} label={stat.label} tags={categories} />
           ))}
         </div>
-        <TabNavigation
+        {/* <TabNavigation
           tabs={["Claims Analysis", "Recommended Products", "Monetization"]}
           activeTab={activeTab}
           onTabClick={setActiveTab}
-        />
+        /> */}
         <FilterSection
-          categories={[
-            "All Categories",
-            "Sleep",
-            "Performance",
-            "Nutrition",
-            "Fitness",
-          ]}
-          statuses={["All Statuses", "Verified", "Questionable", "Debunked"]}
+          categories={categories}
+          statuses={statuses}
           activeFilters={activeFilters}
           onFilterChange={handleFilterChange}
         />
-        <ClaimsList claims={claims} />
+        <ClaimsList claims={filteredClaims} />
       </div>
     </>
   );

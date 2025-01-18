@@ -9,8 +9,7 @@ const AppRouter = () => (
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/research" element={<ResearchPage />} />
-      {/* TODO dinmaic name */}
-      <Route path="/influencer" element={<InfluencerPage />} />
+      <Route path="/influencer/:name" element={<InfluencerPage />} />
     </Routes>
   </Router>
 );

@@ -8,11 +8,8 @@ const Header = () => (
       <a href="/" className="header__link">
         Home
       </a>
-      <a href="/" className="header__link">
-        About
-      </a>
-      <a href="/" className="header__link">
-        Contact
+      <a href="/research" className="header__link">
+        Research
       </a>
     </nav>
   </header>

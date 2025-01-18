@@ -2,17 +2,14 @@ import React from "react";
 import FilterButton from "./FilterButton";
 import "../styles/FilterSection.css";
 
-const FilterSection = ({
-  categories,
-  statuses,
-  activeFilters,
-  onFilterChange,
-}) => (
+const FilterSection = ({ categories, statuses, activeFilters, onFilterChange }) => (
   <div className="filter-section">
     <input
       type="text"
       placeholder="Search claims..."
       className="filter-section__search"
+      value={activeFilters.searchTerm}
+      onChange={(e) => onFilterChange("searchTerm", e.target.value)}
     />
     <div className="filter-section__categories">
       {categories.map((category, index) => (
