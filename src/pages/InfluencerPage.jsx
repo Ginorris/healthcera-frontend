@@ -71,22 +71,26 @@ const InfluencerPage = () => {
   const handleFilterChange = (type, value) => {
     setActiveFilters((prevFilters) => {
       const updatedFilters = { ...prevFilters };
-
-      if (value === "All Categories" || value === "All Statuses") {
-        // Reset the corresponding filter
-        updatedFilters[type] = [];
+  
+      if (type === "searchTerm") {
+        // Directly update the search term
+        updatedFilters.searchTerm = value;
       } else {
-        if (updatedFilters[type].includes(value)) {
-          // Remove the value if it's already selected
-          updatedFilters[type] = updatedFilters[type].filter(
-            (item) => item !== value,
-          );
+        if (value === "All Categories" || value === "All Statuses") {
+          updatedFilters[type] = []; // Reset the corresponding filter
         } else {
-          // Add the value if it's not already selected
-          updatedFilters[type] = [...updatedFilters[type], value];
+          if (updatedFilters[type].includes(value)) {
+            // Remove value if already selected
+            updatedFilters[type] = updatedFilters[type].filter(
+              (item) => item !== value
+            );
+          } else {
+            // Add value if not already selected
+            updatedFilters[type] = [...updatedFilters[type], value];
+          }
         }
       }
-
+  
       return updatedFilters;
     });
   };

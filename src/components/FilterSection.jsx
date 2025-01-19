@@ -9,13 +9,15 @@ const FilterSection = ({
   onFilterChange,
 }) => (
   <div className="filter-section">
-    <input
-      type="text"
-      placeholder="Search claims..."
-      className="filter-section__search"
-      value={activeFilters.searchTerm}
-      onChange={(e) => onFilterChange("searchTerm", e.target.value)}
-    />
+    <div className="filter-section__search-container">
+      <input
+        type="text"
+        placeholder="Search claims..."
+        className="filter-section__search"
+        value={activeFilters.searchTerm}
+        onChange={(e) => onFilterChange("searchTerm", e.target.value)}
+      />
+    </div>
     <div className="filter-section__categories">
       {categories.map((category, index) => (
         <FilterButton

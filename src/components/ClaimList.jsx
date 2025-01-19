@@ -16,9 +16,16 @@ const ClaimsList = ({ claims }) => (
         <h3 className="claims-list__title">{claim.claim}</h3>
         <p className="claims-list__analysis">{claim.analysis}</p>
         <div className="claims-list__footer">
-          <a href={claim.source} className="claims-list__source">
-            View Source
-          </a>
+          {claim.source && (
+            <a href={claim.validation_sources} className="claims-list__source">
+              View Validation Source
+            </a>
+          )}
+          {claim.source && (
+            <a href={claim.source} className="claims-list__source">
+              View Original Source
+            </a>
+          )}
           <span className="claims-list__trust-score">{claim.score}%</span>
         </div>
       </div>
